@@ -1,0 +1,28 @@
+{
+  "name": "roadmap-5-7-17",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js --watch src",
+    "build:css": "djsajhdak",
+    "build:js": "djsajhdak",
+    "build": "npm run build:js; npm run build:css",
+    "start": "node server.js",
+    "postinstall": "echo momo"
+  },
+  "author": "Gal Noy",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "helmet": "^3.6.1",
+    "morgan": "^1.8.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
