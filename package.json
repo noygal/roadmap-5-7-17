@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tape src/**/*.test.js",
     "dev": "nodemon server.js --watch src",
     "build:css": "djsajhdak",
     "build:js": "djsajhdak",
@@ -23,6 +23,7 @@
     "morgan": "^1.8.2"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "tape": "^4.7.0"
   }
 }
