@@ -11,7 +11,6 @@ app.use(compression())
 app.use(helmet())
 app.use(bodyParser.json())
 
-
 let tasks = {}
 
 const genId = () => Date.now()

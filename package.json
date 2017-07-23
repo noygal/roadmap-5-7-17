@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "tape src/**/*.test.js",
+    "test": "tape src/**/*.test.js | tap-spec",
     "dev": "nodemon server.js --watch src",
     "build:css": "djsajhdak",
     "build:js": "djsajhdak",
@@ -23,7 +23,14 @@
     "morgan": "^1.8.2"
   },
   "devDependencies": {
+    "eslint": "^4.3.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "nodemon": "^1.11.0",
+    "tap-spec": "^4.1.1",
     "tape": "^4.7.0"
   }
 }

@@ -1,35 +1,31 @@
 
-// let tasks = {}
-
-// const genId = () => Date.now()
+const express = require('express')
+const crud = require('./crud').init()
 
 const create = ({genId, tasks, logger = console}) => {
+  const router = express.Router()
 
-  const { findTask, createUser } = require('./tasks').create({genId, tasks, logger})
-  const router = require('express').Router()
-  
-  router.param('id', findTask)
-
-  router.get('/', (req, res) => res.send(tasks))
-
-  router.post('/', createUser)
-
-  router.get('/:id', (req, res) => {
-    res.send(tasks[req.taskId])
+  router.param('id', (req, res, next) => {
+    req.entity = crud.findEntity(parseInt(req.params.id))
+    req.entity
+      ? next()
+      : res.sendStatus(404)
   })
 
-  router.put('/:id', (req, res) => {
-    tasks[req.taskId] = req.body
-    res.sendStatus(200)
-  })
+  router.get('/', (req, res, next) => res.send(crud.getAllEntities()))
+
+  router.post('/', (req, res) => res.status(201).send(crud.saveEntity(genId(), req.body)))
+
+  router.get('/:id', (req, res) => console.log(req.entity) || res.send(req.entity))
+
+  router.put('/:id', (req, res) => res.send(crud.saveEntity(genId(), req.body)))
 
   router.delete('/:id', (req, res) => {
-    delete tasks[req.taskId]
-    res.sendStatus(200)
+    crud.deleteEntity(req.params.id)
+    res.sendStatus(204)
   })
 
   return router
 }
 
 module.exports = create
-
