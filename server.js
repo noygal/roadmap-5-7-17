@@ -15,10 +15,10 @@ let tasks = {}
 
 const genId = () => Date.now()
 
-app.use('/tasks', tasksRoute({tasks, genId}))
+app.use(process.env.MOUNT_ROUTE || '/entities', tasksRoute({tasks, genId}))
 
 app.use((req, res) => res.send('last'))
 
 app.use((err, req, res, next) => res.send(err))
 
-app.listen(3000)
+app.listen(process.env.PORT || 3000, () => console.log(`Listen on port: ${process.env.PORT || 3000}`))
