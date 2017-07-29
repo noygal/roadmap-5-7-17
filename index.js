@@ -19,6 +19,7 @@ module.exports = ({port = 3000, mountRoute = '/entities'}) => {
 
   const genId = () => Date.now()
 
+  console.log('mounting on: ', mountRoute)
   app.use(mountRoute, tasksRoute({tasks, genId}))
 
   app.use((req, res) => res.send('last'))
