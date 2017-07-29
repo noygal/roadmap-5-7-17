@@ -3,10 +3,13 @@ module.exports = ({port = 3000, mountRoute = '/entities'}) => {
   const bodyParser = require('body-parser')
   const compression = require('compression')
   const helmet = require('helmet')
+  const morgan = require('morgan')
 
   const app = express()
 
   const tasksRoute = require('./src/routes')
+
+  app.use(morgan('combined'))
 
   app.use(compression())
   app.use(helmet())
