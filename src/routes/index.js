@@ -12,7 +12,12 @@ const create = ({genId, tasks, logger = console}) => {
       : res.sendStatus(404)
   })
 
-  router.get('/', (req, res, next) => res.send(crud.getAllEntities()))
+  router.get('/', (req, res, next) => {
+    const {fieldName, fieldValue} = req.params
+    (fieldName && fieldValue)
+      ? res.send(crud.getFilteredEntities(fieldName, fieldValue))
+      : res.send(crud.getAllEntities())
+  })
 
   router.post('/', (req, res) => res.status(201).send(crud.saveEntity(genId(), req.body)))
 
